@@ -1,0 +1,15 @@
+.vscode
+*.pyc
+
+container/
+docker-compose.yml
+
+db.sqlite3
+.env
+cloud_sql_proxy
+google-cloud-sdk/
+
+.idea/
+venv
+env
+

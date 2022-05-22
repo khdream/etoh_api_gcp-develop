@@ -1,0 +1,8492 @@
+swagger: '2.0'
+info:
+  title: etoh-api
+  description: Food and Wine Matching
+  termsOfService: https://www.google.com/policies/terms/
+  contact:
+    email: contact@snippets.local
+  license:
+    name: BSD License
+  version: v2
+host: api-etoh-back-prod.ew.r.appspot.com
+schemes:
+  - "http"
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
+security:
+    - api_key: []
+x-google-backend:
+  address: https://api-etoh-back-prod.ew.r.appspot.com/
+paths:
+  /amv:
+    get:
+      operationId: amv_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FoodWineMatchSeriazer'
+      tags:
+        - amv
+    post:
+      operationId: amv_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      tags:
+        - amv
+    parameters: []
+  /amv/autocomplete-food/{query}:
+    get:
+      operationId: amv_autocomplate_food
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - amv
+    parameters:
+      - name: query
+        in: path
+        required: true
+        type: string
+  /amv/create-match:
+    post:
+      operationId: amv_create_match
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      tags:
+        - amv
+    parameters: []
+  /amv/food:
+    get:
+      operationId: amv_food_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AMVFood'
+      tags:
+        - amv
+    post:
+      operationId: amv_food_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AMVFood'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AMVFood'
+      tags:
+        - amv
+    parameters: []
+  /amv/food/{id}:
+    get:
+      operationId: amv_food_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AMVFood'
+      tags:
+        - amv
+    put:
+      operationId: amv_food_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AMVFood'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AMVFood'
+      tags:
+        - amv
+    patch:
+      operationId: amv_food_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AMVFood'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AMVFood'
+      tags:
+        - amv
+    delete:
+      operationId: amv_food_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - amv
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Food.
+        required: true
+        type: integer
+  /amv/food_by_match:
+    get:
+      operationId: amv_find_match_by_field
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FoodWineMatchSeriazer'
+      tags:
+        - amv
+    parameters: []
+  /amv/match_by_food/{query}:
+    get:
+      operationId: amv_find_match_by_food
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FoodWineMatchSeriazer'
+      tags:
+        - amv
+    parameters:
+      - name: query
+        in: path
+        required: true
+        type: string
+  /amv/{id}:
+    get:
+      operationId: amv_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      tags:
+        - amv
+    put:
+      operationId: amv_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      tags:
+        - amv
+    patch:
+      operationId: amv_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      tags:
+        - amv
+    delete:
+      operationId: amv_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - amv
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Food Wine Match.
+        required: true
+        type: integer
+  /api/admin_zone:
+    get:
+      operationId: api_admin_zone_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AdminZone'
+      tags:
+        - api
+    post:
+      operationId: api_admin_zone_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AdminZone'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AdminZone'
+      tags:
+        - api
+    parameters: []
+  /api/admin_zone/{id}:
+    get:
+      operationId: api_admin_zone_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AdminZone'
+      tags:
+        - api
+    put:
+      operationId: api_admin_zone_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AdminZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AdminZone'
+      tags:
+        - api
+    patch:
+      operationId: api_admin_zone_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AdminZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AdminZone'
+      tags:
+        - api
+    delete:
+      operationId: api_admin_zone_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Zone Admin.
+        required: true
+        type: integer
+  /api/appellation:
+    get:
+      operationId: api_appellation_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Appellation'
+      tags:
+        - api
+    post:
+      operationId: api_appellation_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Appellation'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Appellation'
+      tags:
+        - api
+    parameters: []
+  /api/appellation/{id}:
+    get:
+      operationId: api_appellation_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Appellation'
+      tags:
+        - api
+    put:
+      operationId: api_appellation_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Appellation'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Appellation'
+      tags:
+        - api
+    patch:
+      operationId: api_appellation_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Appellation'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Appellation'
+      tags:
+        - api
+    delete:
+      operationId: api_appellation_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Appelation.
+        required: true
+        type: integer
+  /api/appellation_colour:
+    get:
+      operationId: api_appellation_colour_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppellationColour'
+      tags:
+        - api
+    post:
+      operationId: api_appellation_colour_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationColour'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationColour'
+      tags:
+        - api
+    parameters: []
+  /api/appellation_colour/{id}:
+    get:
+      operationId: api_appellation_colour_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationColour'
+      tags:
+        - api
+    put:
+      operationId: api_appellation_colour_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationColour'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationColour'
+      tags:
+        - api
+    patch:
+      operationId: api_appellation_colour_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationColour'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationColour'
+      tags:
+        - api
+    delete:
+      operationId: api_appellation_colour_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Appellation Colour.
+        required: true
+        type: integer
+  /api/appellation_photo:
+    get:
+      operationId: api_appellation_photo_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - api
+    post:
+      operationId: api_appellation_photo_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - api
+    parameters: []
+  /api/appellation_photo/{id}:
+    get:
+      operationId: api_appellation_photo_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - api
+    put:
+      operationId: api_appellation_photo_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - api
+    patch:
+      operationId: api_appellation_photo_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - api
+    delete:
+      operationId: api_appellation_photo_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Appellation Photo.
+        required: true
+        type: integer
+  /api/appellation_type:
+    get:
+      operationId: api_appellation_type_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppellationType'
+      tags:
+        - api
+    post:
+      operationId: api_appellation_type_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationType'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationType'
+      tags:
+        - api
+    parameters: []
+  /api/appellation_type/{id}:
+    get:
+      operationId: api_appellation_type_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationType'
+      tags:
+        - api
+    put:
+      operationId: api_appellation_type_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationType'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationType'
+      tags:
+        - api
+    patch:
+      operationId: api_appellation_type_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationType'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationType'
+      tags:
+        - api
+    delete:
+      operationId: api_appellation_type_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Appellation Type.
+        required: true
+        type: integer
+  /api/appellation_zone:
+    get:
+      operationId: api_appellation_zone_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppellationZone'
+      tags:
+        - api
+    post:
+      operationId: api_appellation_zone_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      tags:
+        - api
+    parameters: []
+  /api/appellation_zone/{id}:
+    get:
+      operationId: api_appellation_zone_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      tags:
+        - api
+    put:
+      operationId: api_appellation_zone_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      tags:
+        - api
+    patch:
+      operationId: api_appellation_zone_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      tags:
+        - api
+    delete:
+      operationId: api_appellation_zone_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Appelation Zone.
+        required: true
+        type: integer
+  /api/aroma:
+    get:
+      operationId: api_aroma_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Aroma'
+      tags:
+        - api
+    post:
+      operationId: api_aroma_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Aroma'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Aroma'
+      tags:
+        - api
+    parameters: []
+  /api/aroma/{id}:
+    get:
+      operationId: api_aroma_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Aroma'
+      tags:
+        - api
+    put:
+      operationId: api_aroma_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Aroma'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Aroma'
+      tags:
+        - api
+    patch:
+      operationId: api_aroma_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Aroma'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Aroma'
+      tags:
+        - api
+    delete:
+      operationId: api_aroma_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Aroma.
+        required: true
+        type: integer
+  /api/assemble:
+    get:
+      operationId: api_assemble_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Assemble'
+      tags:
+        - api
+    post:
+      operationId: api_assemble_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Assemble'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Assemble'
+      tags:
+        - api
+    parameters: []
+  /api/assemble/{id}:
+    get:
+      operationId: api_assemble_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Assemble'
+      tags:
+        - api
+    put:
+      operationId: api_assemble_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Assemble'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Assemble'
+      tags:
+        - api
+    patch:
+      operationId: api_assemble_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Assemble'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Assemble'
+      tags:
+        - api
+    delete:
+      operationId: api_assemble_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this assemble.
+        required: true
+        type: integer
+  /api/bottle:
+    get:
+      operationId: api_bottle_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Bottle'
+      tags:
+        - api
+    post:
+      operationId: api_bottle_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Bottle'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Bottle'
+      tags:
+        - api
+    parameters: []
+  /api/bottle/{id}:
+    get:
+      operationId: api_bottle_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Bottle'
+      tags:
+        - api
+    put:
+      operationId: api_bottle_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Bottle'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Bottle'
+      tags:
+        - api
+    patch:
+      operationId: api_bottle_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Bottle'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Bottle'
+      tags:
+        - api
+    delete:
+      operationId: api_bottle_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Bottle.
+        required: true
+        type: integer
+  /api/bottle_photo:
+    get:
+      operationId: api_bottle_photo_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BottlePhoto'
+      tags:
+        - api
+    post:
+      operationId: api_bottle_photo_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/BottlePhoto'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/BottlePhoto'
+      tags:
+        - api
+    parameters: []
+  /api/bottle_photo/{id}:
+    get:
+      operationId: api_bottle_photo_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/BottlePhoto'
+      tags:
+        - api
+    put:
+      operationId: api_bottle_photo_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/BottlePhoto'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/BottlePhoto'
+      tags:
+        - api
+    patch:
+      operationId: api_bottle_photo_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/BottlePhoto'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/BottlePhoto'
+      tags:
+        - api
+    delete:
+      operationId: api_bottle_photo_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Bottle Photo.
+        required: true
+        type: integer
+  /api/bottle_price:
+    get:
+      operationId: api_bottle_price_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/BottlePriceSeriazer'
+      tags:
+        - api
+    post:
+      operationId: api_bottle_price_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/BottlePriceSeriazer'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/BottlePriceSeriazer'
+      tags:
+        - api
+    parameters: []
+  /api/bottle_price/{id}:
+    get:
+      operationId: api_bottle_price_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/BottlePriceSeriazer'
+      tags:
+        - api
+    put:
+      operationId: api_bottle_price_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/BottlePriceSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/BottlePriceSeriazer'
+      tags:
+        - api
+    patch:
+      operationId: api_bottle_price_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/BottlePriceSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/BottlePriceSeriazer'
+      tags:
+        - api
+    delete:
+      operationId: api_bottle_price_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Bottle price.
+        required: true
+        type: integer
+  /api/category_lexicon:
+    get:
+      operationId: api_category_lexicon_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CategoryLexicon'
+      tags:
+        - api
+    post:
+      operationId: api_category_lexicon_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CategoryLexicon'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/CategoryLexicon'
+      tags:
+        - api
+    parameters: []
+  /api/category_lexicon/{id}:
+    get:
+      operationId: api_category_lexicon_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CategoryLexicon'
+      tags:
+        - api
+    put:
+      operationId: api_category_lexicon_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CategoryLexicon'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CategoryLexicon'
+      tags:
+        - api
+    patch:
+      operationId: api_category_lexicon_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CategoryLexicon'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CategoryLexicon'
+      tags:
+        - api
+    delete:
+      operationId: api_category_lexicon_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Lexicon Category.
+        required: true
+        type: integer
+  /api/client:
+    get:
+      operationId: api_client_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ClientSeriazer'
+      tags:
+        - api
+    post:
+      operationId: api_client_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ClientSeriazer'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ClientSeriazer'
+      tags:
+        - api
+    parameters: []
+  /api/client/{id}:
+    get:
+      operationId: api_client_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ClientSeriazer'
+      tags:
+        - api
+    put:
+      operationId: api_client_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ClientSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ClientSeriazer'
+      tags:
+        - api
+    patch:
+      operationId: api_client_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ClientSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ClientSeriazer'
+      tags:
+        - api
+    delete:
+      operationId: api_client_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Client.
+        required: true
+        type: integer
+  /api/command:
+    get:
+      operationId: api_command_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CommandSeriazer'
+      tags:
+        - api
+    post:
+      operationId: api_command_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CommandSeriazer'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/CommandSeriazer'
+      tags:
+        - api
+    parameters: []
+  /api/command/{id}:
+    get:
+      operationId: api_command_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CommandSeriazer'
+      tags:
+        - api
+    put:
+      operationId: api_command_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CommandSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CommandSeriazer'
+      tags:
+        - api
+    patch:
+      operationId: api_command_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CommandSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/CommandSeriazer'
+      tags:
+        - api
+    delete:
+      operationId: api_command_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Command.
+        required: true
+        type: integer
+  /api/cooking:
+    get:
+      operationId: api_cooking_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Cooking'
+      tags:
+        - api
+    post:
+      operationId: api_cooking_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Cooking'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Cooking'
+      tags:
+        - api
+    parameters: []
+  /api/cooking/{id}:
+    get:
+      operationId: api_cooking_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Cooking'
+      tags:
+        - api
+    put:
+      operationId: api_cooking_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Cooking'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Cooking'
+      tags:
+        - api
+    patch:
+      operationId: api_cooking_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Cooking'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Cooking'
+      tags:
+        - api
+    delete:
+      operationId: api_cooking_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Cooking.
+        required: true
+        type: integer
+  /api/country:
+    get:
+      operationId: api_country_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Country'
+      tags:
+        - api
+    post:
+      operationId: api_country_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Country'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Country'
+      tags:
+        - api
+    parameters: []
+  /api/country/{id}:
+    get:
+      operationId: api_country_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Country'
+      tags:
+        - api
+    put:
+      operationId: api_country_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Country'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Country'
+      tags:
+        - api
+    patch:
+      operationId: api_country_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Country'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Country'
+      tags:
+        - api
+    delete:
+      operationId: api_country_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Country.
+        required: true
+        type: integer
+  /api/denomination_wine:
+    get:
+      operationId: api_denomination_wine_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DenominationWine'
+      tags:
+        - api
+    post:
+      operationId: api_denomination_wine_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/DenominationWine'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/DenominationWine'
+      tags:
+        - api
+    parameters: []
+  /api/denomination_wine/{id}:
+    get:
+      operationId: api_denomination_wine_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/DenominationWine'
+      tags:
+        - api
+    put:
+      operationId: api_denomination_wine_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/DenominationWine'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/DenominationWine'
+      tags:
+        - api
+    patch:
+      operationId: api_denomination_wine_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/DenominationWine'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/DenominationWine'
+      tags:
+        - api
+    delete:
+      operationId: api_denomination_wine_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Denomination Wine.
+        required: true
+        type: integer
+  /api/food:
+    get:
+      operationId: api_food_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FoodSeriazer'
+      tags:
+        - api
+    post:
+      operationId: api_food_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FoodSeriazer'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodSeriazer'
+      tags:
+        - api
+    parameters: []
+  /api/food/{id}:
+    get:
+      operationId: api_food_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodSeriazer'
+      tags:
+        - api
+    put:
+      operationId: api_food_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FoodSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodSeriazer'
+      tags:
+        - api
+    patch:
+      operationId: api_food_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FoodSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodSeriazer'
+      tags:
+        - api
+    delete:
+      operationId: api_food_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Food.
+        required: true
+        type: integer
+  /api/food_category:
+    get:
+      operationId: api_food_category_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FoodCategory'
+      tags:
+        - api
+    post:
+      operationId: api_food_category_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FoodCategory'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodCategory'
+      tags:
+        - api
+    parameters: []
+  /api/food_category/{id}:
+    get:
+      operationId: api_food_category_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodCategory'
+      tags:
+        - api
+    put:
+      operationId: api_food_category_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FoodCategory'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodCategory'
+      tags:
+        - api
+    patch:
+      operationId: api_food_category_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FoodCategory'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodCategory'
+      tags:
+        - api
+    delete:
+      operationId: api_food_category_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Food Category.
+        required: true
+        type: integer
+  /api/food_wine_match:
+    get:
+      operationId: api_food_wine_match_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/FoodWineMatchSeriazer'
+      tags:
+        - api
+    post:
+      operationId: api_food_wine_match_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      tags:
+        - api
+    parameters: []
+  /api/food_wine_match/{id}:
+    get:
+      operationId: api_food_wine_match_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      tags:
+        - api
+    put:
+      operationId: api_food_wine_match_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      tags:
+        - api
+    patch:
+      operationId: api_food_wine_match_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/FoodWineMatchSeriazer'
+      tags:
+        - api
+    delete:
+      operationId: api_food_wine_match_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Food Wine Match.
+        required: true
+        type: integer
+  /api/grape:
+    get:
+      operationId: api_grape_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Grape'
+      tags:
+        - api
+    post:
+      operationId: api_grape_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Grape'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Grape'
+      tags:
+        - api
+    parameters: []
+  /api/grape/{id}:
+    get:
+      operationId: api_grape_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Grape'
+      tags:
+        - api
+    put:
+      operationId: api_grape_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Grape'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Grape'
+      tags:
+        - api
+    patch:
+      operationId: api_grape_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Grape'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Grape'
+      tags:
+        - api
+    delete:
+      operationId: api_grape_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Grape.
+        required: true
+        type: integer
+  /api/grape_assemble:
+    get:
+      operationId: api_grape_assemble_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/GrapeAssembly'
+      tags:
+        - api
+    post:
+      operationId: api_grape_assemble_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/GrapeAssembly'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/GrapeAssembly'
+      tags:
+        - api
+    parameters: []
+  /api/grape_assemble/{id}:
+    get:
+      operationId: api_grape_assemble_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GrapeAssembly'
+      tags:
+        - api
+    put:
+      operationId: api_grape_assemble_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/GrapeAssembly'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GrapeAssembly'
+      tags:
+        - api
+    patch:
+      operationId: api_grape_assemble_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/GrapeAssembly'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GrapeAssembly'
+      tags:
+        - api
+    delete:
+      operationId: api_grape_assemble_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this grape assembly.
+        required: true
+        type: integer
+  /api/grape_profile:
+    get:
+      operationId: api_grape_profile_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/GrapeProfile'
+      tags:
+        - api
+    post:
+      operationId: api_grape_profile_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/GrapeProfile'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/GrapeProfile'
+      tags:
+        - api
+    parameters: []
+  /api/grape_profile/{id}:
+    get:
+      operationId: api_grape_profile_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GrapeProfile'
+      tags:
+        - api
+    put:
+      operationId: api_grape_profile_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/GrapeProfile'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GrapeProfile'
+      tags:
+        - api
+    patch:
+      operationId: api_grape_profile_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/GrapeProfile'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GrapeProfile'
+      tags:
+        - api
+    delete:
+      operationId: api_grape_profile_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this grape profile.
+        required: true
+        type: integer
+  /api/ingredient:
+    get:
+      operationId: api_ingredient_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Ingredient'
+      tags:
+        - api
+    post:
+      operationId: api_ingredient_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Ingredient'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Ingredient'
+      tags:
+        - api
+    parameters: []
+  /api/ingredient/{id}:
+    get:
+      operationId: api_ingredient_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Ingredient'
+      tags:
+        - api
+    put:
+      operationId: api_ingredient_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Ingredient'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Ingredient'
+      tags:
+        - api
+    patch:
+      operationId: api_ingredient_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Ingredient'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Ingredient'
+      tags:
+        - api
+    delete:
+      operationId: api_ingredient_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Ingredient.
+        required: true
+        type: integer
+  /api/lexicon:
+    get:
+      operationId: api_lexicon_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Lexicon'
+      tags:
+        - api
+    post:
+      operationId: api_lexicon_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Lexicon'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Lexicon'
+      tags:
+        - api
+    parameters: []
+  /api/lexicon/{id}:
+    get:
+      operationId: api_lexicon_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Lexicon'
+      tags:
+        - api
+    put:
+      operationId: api_lexicon_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Lexicon'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Lexicon'
+      tags:
+        - api
+    patch:
+      operationId: api_lexicon_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Lexicon'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Lexicon'
+      tags:
+        - api
+    delete:
+      operationId: api_lexicon_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Lexicon.
+        required: true
+        type: integer
+  /api/message:
+    get:
+      operationId: api_message_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MessageSeriazer'
+      tags:
+        - api
+    post:
+      operationId: api_message_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/MessageSeriazer'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/MessageSeriazer'
+      tags:
+        - api
+    parameters: []
+  /api/message/{id}:
+    get:
+      operationId: api_message_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/MessageSeriazer'
+      tags:
+        - api
+    put:
+      operationId: api_message_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/MessageSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/MessageSeriazer'
+      tags:
+        - api
+    patch:
+      operationId: api_message_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/MessageSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/MessageSeriazer'
+      tags:
+        - api
+    delete:
+      operationId: api_message_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Message.
+        required: true
+        type: integer
+  /api/note_guide:
+    get:
+      operationId: api_note_guide_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/NoteGuide'
+      tags:
+        - api
+    post:
+      operationId: api_note_guide_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/NoteGuide'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/NoteGuide'
+      tags:
+        - api
+    parameters: []
+  /api/note_guide/{id}:
+    get:
+      operationId: api_note_guide_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/NoteGuide'
+      tags:
+        - api
+    put:
+      operationId: api_note_guide_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/NoteGuide'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/NoteGuide'
+      tags:
+        - api
+    patch:
+      operationId: api_note_guide_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/NoteGuide'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/NoteGuide'
+      tags:
+        - api
+    delete:
+      operationId: api_note_guide_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Note Guide.
+        required: true
+        type: integer
+  /api/plot_zone:
+    get:
+      operationId: api_plot_zone_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PlotZone'
+      tags:
+        - api
+    post:
+      operationId: api_plot_zone_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PlotZone'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - api
+    parameters: []
+  /api/plot_zone/{id}:
+    get:
+      operationId: api_plot_zone_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - api
+    put:
+      operationId: api_plot_zone_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PlotZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - api
+    patch:
+      operationId: api_plot_zone_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PlotZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - api
+    delete:
+      operationId: api_plot_zone_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Plot Zone.
+        required: true
+        type: integer
+  /api/recipe:
+    get:
+      operationId: api_recipe_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Recipe'
+      tags:
+        - api
+    post:
+      operationId: api_recipe_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Recipe'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Recipe'
+      tags:
+        - api
+    parameters: []
+  /api/recipe/{id}:
+    get:
+      operationId: api_recipe_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Recipe'
+      tags:
+        - api
+    put:
+      operationId: api_recipe_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Recipe'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Recipe'
+      tags:
+        - api
+    patch:
+      operationId: api_recipe_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Recipe'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Recipe'
+      tags:
+        - api
+    delete:
+      operationId: api_recipe_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Recipe.
+        required: true
+        type: integer
+  /api/recipe_cooking:
+    get:
+      operationId: api_recipe_cooking_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/RecipeCooking'
+      tags:
+        - api
+    post:
+      operationId: api_recipe_cooking_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RecipeCooking'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/RecipeCooking'
+      tags:
+        - api
+    parameters: []
+  /api/recipe_cooking/{id}:
+    get:
+      operationId: api_recipe_cooking_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/RecipeCooking'
+      tags:
+        - api
+    put:
+      operationId: api_recipe_cooking_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RecipeCooking'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/RecipeCooking'
+      tags:
+        - api
+    patch:
+      operationId: api_recipe_cooking_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RecipeCooking'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/RecipeCooking'
+      tags:
+        - api
+    delete:
+      operationId: api_recipe_cooking_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Recipe cooking relation.
+        required: true
+        type: integer
+  /api/recipe_ingredient:
+    get:
+      operationId: api_recipe_ingredient_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/RecipeIngredient'
+      tags:
+        - api
+    post:
+      operationId: api_recipe_ingredient_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RecipeIngredient'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/RecipeIngredient'
+      tags:
+        - api
+    parameters: []
+  /api/recipe_ingredient/{id}:
+    get:
+      operationId: api_recipe_ingredient_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/RecipeIngredient'
+      tags:
+        - api
+    put:
+      operationId: api_recipe_ingredient_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RecipeIngredient'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/RecipeIngredient'
+      tags:
+        - api
+    patch:
+      operationId: api_recipe_ingredient_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RecipeIngredient'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/RecipeIngredient'
+      tags:
+        - api
+    delete:
+      operationId: api_recipe_ingredient_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Recipe ingredient relation.
+        required: true
+        type: integer
+  /api/recipe_spice:
+    get:
+      operationId: api_recipe_spice_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/RecipeSpice'
+      tags:
+        - api
+    post:
+      operationId: api_recipe_spice_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RecipeSpice'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/RecipeSpice'
+      tags:
+        - api
+    parameters: []
+  /api/recipe_spice/{id}:
+    get:
+      operationId: api_recipe_spice_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/RecipeSpice'
+      tags:
+        - api
+    put:
+      operationId: api_recipe_spice_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RecipeSpice'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/RecipeSpice'
+      tags:
+        - api
+    patch:
+      operationId: api_recipe_spice_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RecipeSpice'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/RecipeSpice'
+      tags:
+        - api
+    delete:
+      operationId: api_recipe_spice_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Recipe spice relation.
+        required: true
+        type: integer
+  /api/robe:
+    get:
+      operationId: api_robe_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Robe'
+      tags:
+        - api
+    post:
+      operationId: api_robe_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Robe'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Robe'
+      tags:
+        - api
+    parameters: []
+  /api/robe/{id}:
+    get:
+      operationId: api_robe_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Robe'
+      tags:
+        - api
+    put:
+      operationId: api_robe_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Robe'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Robe'
+      tags:
+        - api
+    patch:
+      operationId: api_robe_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Robe'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Robe'
+      tags:
+        - api
+    delete:
+      operationId: api_robe_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Robe.
+        required: true
+        type: integer
+  /api/scale:
+    get:
+      operationId: api_scale_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ScaleSeriazer'
+      tags:
+        - api
+    post:
+      operationId: api_scale_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ScaleSeriazer'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ScaleSeriazer'
+      tags:
+        - api
+    parameters: []
+  /api/scale/{id}:
+    get:
+      operationId: api_scale_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ScaleSeriazer'
+      tags:
+        - api
+    put:
+      operationId: api_scale_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ScaleSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ScaleSeriazer'
+      tags:
+        - api
+    patch:
+      operationId: api_scale_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ScaleSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ScaleSeriazer'
+      tags:
+        - api
+    delete:
+      operationId: api_scale_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Scale.
+        required: true
+        type: integer
+  /api/spice:
+    get:
+      operationId: api_spice_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Spice'
+      tags:
+        - api
+    post:
+      operationId: api_spice_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Spice'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Spice'
+      tags:
+        - api
+    parameters: []
+  /api/spice/{id}:
+    get:
+      operationId: api_spice_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Spice'
+      tags:
+        - api
+    put:
+      operationId: api_spice_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Spice'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Spice'
+      tags:
+        - api
+    patch:
+      operationId: api_spice_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Spice'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Spice'
+      tags:
+        - api
+    delete:
+      operationId: api_spice_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Spice.
+        required: true
+        type: integer
+  /api/stock:
+    get:
+      operationId: api_stock_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StockSeriazer'
+      tags:
+        - api
+    post:
+      operationId: api_stock_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StockSeriazer'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockSeriazer'
+      tags:
+        - api
+    parameters: []
+  /api/stock/{id}:
+    get:
+      operationId: api_stock_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockSeriazer'
+      tags:
+        - api
+    put:
+      operationId: api_stock_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StockSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockSeriazer'
+      tags:
+        - api
+    patch:
+      operationId: api_stock_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StockSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockSeriazer'
+      tags:
+        - api
+    delete:
+      operationId: api_stock_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Stock.
+        required: true
+        type: integer
+  /api/stock_list:
+    get:
+      operationId: api_stock_list_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StockList'
+      tags:
+        - api
+    post:
+      operationId: api_stock_list_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StockList'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockList'
+      tags:
+        - api
+    parameters: []
+  /api/stock_list/{id}:
+    get:
+      operationId: api_stock_list_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockList'
+      tags:
+        - api
+    put:
+      operationId: api_stock_list_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StockList'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockList'
+      tags:
+        - api
+    patch:
+      operationId: api_stock_list_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StockList'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockList'
+      tags:
+        - api
+    delete:
+      operationId: api_stock_list_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Stock list.
+        required: true
+        type: integer
+  /api/sugar_dose:
+    get:
+      operationId: api_sugar_dose_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SugarDose'
+      tags:
+        - api
+    post:
+      operationId: api_sugar_dose_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SugarDose'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/SugarDose'
+      tags:
+        - api
+    parameters: []
+  /api/sugar_dose/{id}:
+    get:
+      operationId: api_sugar_dose_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/SugarDose'
+      tags:
+        - api
+    put:
+      operationId: api_sugar_dose_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SugarDose'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/SugarDose'
+      tags:
+        - api
+    patch:
+      operationId: api_sugar_dose_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SugarDose'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/SugarDose'
+      tags:
+        - api
+    delete:
+      operationId: api_sugar_dose_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Dose.
+        required: true
+        type: integer
+  /api/vintage:
+    get:
+      operationId: api_vintage_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Vintage'
+      tags:
+        - api
+    post:
+      operationId: api_vintage_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Vintage'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Vintage'
+      tags:
+        - api
+    parameters: []
+  /api/vintage/{id}:
+    get:
+      operationId: api_vintage_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Vintage'
+      tags:
+        - api
+    put:
+      operationId: api_vintage_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Vintage'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Vintage'
+      tags:
+        - api
+    patch:
+      operationId: api_vintage_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Vintage'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Vintage'
+      tags:
+        - api
+    delete:
+      operationId: api_vintage_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Vintage.
+        required: true
+        type: integer
+  /api/viticulture_zone:
+    get:
+      operationId: api_viticulture_zone_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ViticultureZone'
+      tags:
+        - api
+    post:
+      operationId: api_viticulture_zone_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ViticultureZone'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ViticultureZone'
+      tags:
+        - api
+    parameters: []
+  /api/viticulture_zone/{id}:
+    get:
+      operationId: api_viticulture_zone_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ViticultureZone'
+      tags:
+        - api
+    put:
+      operationId: api_viticulture_zone_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ViticultureZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ViticultureZone'
+      tags:
+        - api
+    patch:
+      operationId: api_viticulture_zone_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ViticultureZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ViticultureZone'
+      tags:
+        - api
+    delete:
+      operationId: api_viticulture_zone_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Viticulture zone.
+        required: true
+        type: integer
+  /api/warehouse:
+    get:
+      operationId: api_warehouse_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WarehouseSeriazer'
+      tags:
+        - api
+    post:
+      operationId: api_warehouse_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WarehouseSeriazer'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WarehouseSeriazer'
+      tags:
+        - api
+    parameters: []
+  /api/warehouse/{id}:
+    get:
+      operationId: api_warehouse_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WarehouseSeriazer'
+      tags:
+        - api
+    put:
+      operationId: api_warehouse_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WarehouseSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WarehouseSeriazer'
+      tags:
+        - api
+    patch:
+      operationId: api_warehouse_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WarehouseSeriazer'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WarehouseSeriazer'
+      tags:
+        - api
+    delete:
+      operationId: api_warehouse_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Warehouse.
+        required: true
+        type: integer
+  /api/wine_bottle:
+    get:
+      operationId: api_wine_bottle_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineBottle'
+      tags:
+        - api
+    post:
+      operationId: api_wine_bottle_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineBottle'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineBottle'
+      tags:
+        - api
+    parameters: []
+  /api/wine_bottle/{id}:
+    get:
+      operationId: api_wine_bottle_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineBottle'
+      tags:
+        - api
+    put:
+      operationId: api_wine_bottle_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineBottle'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineBottle'
+      tags:
+        - api
+    patch:
+      operationId: api_wine_bottle_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineBottle'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineBottle'
+      tags:
+        - api
+    delete:
+      operationId: api_wine_bottle_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine Bottle.
+        required: true
+        type: integer
+  /api/wine_cdc:
+    get:
+      operationId: api_wine_cdc_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineCDC'
+      tags:
+        - api
+    post:
+      operationId: api_wine_cdc_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineCDC'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineCDC'
+      tags:
+        - api
+    parameters: []
+  /api/wine_cdc/{id}:
+    get:
+      operationId: api_wine_cdc_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineCDC'
+      tags:
+        - api
+    put:
+      operationId: api_wine_cdc_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineCDC'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineCDC'
+      tags:
+        - api
+    patch:
+      operationId: api_wine_cdc_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineCDC'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineCDC'
+      tags:
+        - api
+    delete:
+      operationId: api_wine_cdc_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine CDC.
+        required: true
+        type: integer
+  /api/wine_cdc_lexicon:
+    get:
+      operationId: api_wine_cdc_lexicon_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineCDCLexicon'
+      tags:
+        - api
+    post:
+      operationId: api_wine_cdc_lexicon_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineCDCLexicon'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineCDCLexicon'
+      tags:
+        - api
+    parameters: []
+  /api/wine_cdc_lexicon/{id}:
+    get:
+      operationId: api_wine_cdc_lexicon_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineCDCLexicon'
+      tags:
+        - api
+    put:
+      operationId: api_wine_cdc_lexicon_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineCDCLexicon'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineCDCLexicon'
+      tags:
+        - api
+    patch:
+      operationId: api_wine_cdc_lexicon_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineCDCLexicon'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineCDCLexicon'
+      tags:
+        - api
+    delete:
+      operationId: api_wine_cdc_lexicon_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this WineCDCLexicon.
+        required: true
+        type: integer
+  /api/wine_maker:
+    get:
+      operationId: api_wine_maker_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineMaker'
+      tags:
+        - api
+    post:
+      operationId: api_wine_maker_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMaker'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - api
+    parameters: []
+  /api/wine_maker/{id}:
+    get:
+      operationId: api_wine_maker_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - api
+    put:
+      operationId: api_wine_maker_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMaker'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - api
+    patch:
+      operationId: api_wine_maker_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMaker'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - api
+    delete:
+      operationId: api_wine_maker_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this WineMaker.
+        required: true
+        type: integer
+  /api/wine_maker_profile:
+    get:
+      operationId: api_wine_maker_profile_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineMakerProfile'
+      tags:
+        - api
+    post:
+      operationId: api_wine_maker_profile_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMakerProfile'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMakerProfile'
+      tags:
+        - api
+    parameters: []
+  /api/wine_maker_profile/{id}:
+    get:
+      operationId: api_wine_maker_profile_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMakerProfile'
+      tags:
+        - api
+    put:
+      operationId: api_wine_maker_profile_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMakerProfile'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMakerProfile'
+      tags:
+        - api
+    patch:
+      operationId: api_wine_maker_profile_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMakerProfile'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMakerProfile'
+      tags:
+        - api
+    delete:
+      operationId: api_wine_maker_profile_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this WineMakerProfile.
+        required: true
+        type: integer
+  /api/wine_profile_cdc:
+    get:
+      operationId: api_wine_profile_cdc_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineProfileCDC'
+      tags:
+        - api
+    post:
+      operationId: api_wine_profile_cdc_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineProfileCDC'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineProfileCDC'
+      tags:
+        - api
+    parameters: []
+  /api/wine_profile_cdc/{id}:
+    get:
+      operationId: api_wine_profile_cdc_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineProfileCDC'
+      tags:
+        - api
+    put:
+      operationId: api_wine_profile_cdc_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineProfileCDC'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineProfileCDC'
+      tags:
+        - api
+    patch:
+      operationId: api_wine_profile_cdc_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineProfileCDC'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineProfileCDC'
+      tags:
+        - api
+    delete:
+      operationId: api_wine_profile_cdc_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - api
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this WineProfileCDC.
+        required: true
+        type: integer
+  /bottle:
+    get:
+      operationId: bottle_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Bottle'
+      tags:
+        - bottle
+    post:
+      operationId: bottle_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Bottle'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Bottle'
+      tags:
+        - bottle
+    parameters: []
+  /bottle/blend/{id}:
+    get:
+      operationId: bottle_get_bottle_blend
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Bottle'
+      tags:
+        - bottle
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Bottle.
+        required: true
+        type: integer
+  /bottle/description:
+    get:
+      operationId: bottle_description_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineMaker'
+      tags:
+        - bottle
+    post:
+      operationId: bottle_description_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMaker'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - bottle
+    parameters: []
+  /bottle/description/tasting/{id}:
+    get:
+      operationId: bottle_description_get_description_tasting
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - bottle
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine Bottle.
+        required: true
+        type: integer
+  /bottle/description/vintage/{id}:
+    get:
+      operationId: bottle_description_get_description_vintage
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - bottle
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine Bottle.
+        required: true
+        type: integer
+  /bottle/description/viticulture/{id}:
+    get:
+      operationId: bottle_description_get_description_viticulture
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - bottle
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine Bottle.
+        required: true
+        type: integer
+  /bottle/description/wine/{id}:
+    get:
+      operationId: bottle_description_get_description_wine
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineCDC'
+      tags:
+        - bottle
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine CDC.
+        required: true
+        type: integer
+  /bottle/description/winemaker/{id}:
+    get:
+      operationId: bottle_description_get_description_winemaker
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineMaker'
+      tags:
+        - bottle
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this WineMaker.
+        required: true
+        type: integer
+  /bottle/description/winemaking/{id}:
+    get:
+      operationId: bottle_description_get_description_winemaking
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - bottle
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine Bottle.
+        required: true
+        type: integer
+  /bottle/description/{id}:
+    get:
+      operationId: bottle_description_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - bottle
+    put:
+      operationId: bottle_description_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMaker'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - bottle
+    patch:
+      operationId: bottle_description_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMaker'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - bottle
+    delete:
+      operationId: bottle_description_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - bottle
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this WineMaker.
+        required: true
+        type: integer
+  /bottle/match:
+    post:
+      operationId: bottle_match_bottle
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Bottle'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Bottle'
+      tags:
+        - bottle
+    parameters: []
+  /bottle/notes/{id}:
+    get:
+      operationId: bottle_get_bottle_notes
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Bottle'
+      tags:
+        - bottle
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Bottle.
+        required: true
+        type: integer
+  /bottle/photo/{id}:
+    get:
+      operationId: bottle_get_photo
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Bottle'
+      tags:
+        - bottle
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Bottle.
+        required: true
+        type: integer
+  /bottle/photo360/{id}:
+    get:
+      operationId: bottle_get_photo_360
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Bottle'
+      tags:
+        - bottle
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Bottle.
+        required: true
+        type: integer
+  /bottle/properties/{id}:
+    get:
+      operationId: bottle_get_bottle_properties
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Bottle'
+      tags:
+        - bottle
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Bottle.
+        required: true
+        type: integer
+  /bottle/{id}:
+    get:
+      operationId: bottle_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Bottle'
+      tags:
+        - bottle
+    put:
+      operationId: bottle_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Bottle'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Bottle'
+      tags:
+        - bottle
+    patch:
+      operationId: bottle_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Bottle'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Bottle'
+      tags:
+        - bottle
+    delete:
+      operationId: bottle_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - bottle
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Bottle.
+        required: true
+        type: integer
+  /geo:
+    get:
+      operationId: geo_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppellationZone'
+      tags:
+        - geo
+    post:
+      operationId: geo_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      tags:
+        - geo
+    parameters: []
+  /geo/autocomplete/lieudit/{start_name}:
+    get:
+      operationId: geo_autocomplete_autocomplate
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AdminZone'
+      tags:
+        - geo
+    parameters:
+      - name: start_name
+        in: path
+        required: true
+        type: string
+  /geo/autocomplete/{start_of_name}:
+    get:
+      operationId: geo_autocomplete
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Appellation'
+      tags:
+        - geo
+    parameters:
+      - name: start_of_name
+        in: path
+        required: true
+        type: string
+  /geo/boundingbox/{id}:
+    get:
+      operationId: geo_get_bounding_box
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppellationZone'
+      tags:
+        - geo
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Appelation Zone.
+        required: true
+        type: integer
+  /geo/boundingbox_multiple:
+    get:
+      operationId: geo_get_multiple_bounding_box
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppellationZone'
+      tags:
+        - geo
+    parameters: []
+  /geo/cadastre/plot:
+    get:
+      operationId: geo_cadastre_plot_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    post:
+      operationId: geo_cadastre_plot_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PlotZone'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    parameters: []
+  /geo/cadastre/plot/{code_insee}/{section}/{number}:
+    get:
+      operationId: geo_cadastre_plot_id_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    put:
+      operationId: geo_cadastre_plot_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PlotZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    delete:
+      operationId: geo_cadastre_plot_id_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - geo
+    parameters:
+      - name: code_insee
+        in: path
+        required: true
+        type: string
+      - name: number
+        in: path
+        required: true
+        type: string
+      - name: section
+        in: path
+        required: true
+        type: string
+  /geo/cadastre/plot/{id}:
+    get:
+      operationId: geo_cadastre_plot_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    put:
+      operationId: geo_cadastre_plot_id_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PlotZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    patch:
+      operationId: geo_cadastre_plot_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PlotZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    delete:
+      operationId: geo_cadastre_plot_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - geo
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Plot Zone.
+        required: true
+        type: integer
+  /geo/cadastre/section:
+    get:
+      operationId: geo_cadastre_section_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    post:
+      operationId: geo_cadastre_section_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PlotZone'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    parameters: []
+  /geo/cadastre/section/{code_insee}/{section}:
+    get:
+      operationId: geo_cadastre_section_id_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    put:
+      operationId: geo_cadastre_section_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PlotZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    delete:
+      operationId: geo_cadastre_section_id_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - geo
+    parameters:
+      - name: code_insee
+        in: path
+        required: true
+        type: string
+      - name: section
+        in: path
+        required: true
+        type: string
+  /geo/cadastre/section/{id}:
+    get:
+      operationId: geo_cadastre_section_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    put:
+      operationId: geo_cadastre_section_id_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PlotZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    patch:
+      operationId: geo_cadastre_section_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PlotZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PlotZone'
+      tags:
+        - geo
+    delete:
+      operationId: geo_cadastre_section_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - geo
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Plot Zone.
+        required: true
+        type: integer
+  /geo/cadastre/{place}/{name}/{code_insee}:
+    get:
+      operationId: geo_get_cadastre
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AdminZone'
+      tags:
+        - geo
+    parameters:
+      - name: code_insee
+        in: path
+        required: true
+        type: string
+      - name: name
+        in: path
+        required: true
+        type: string
+      - name: place
+        in: path
+        required: true
+        type: string
+  /geo/centerpoint/{id}:
+    get:
+      operationId: geo_get_centerpoint
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppellationZone'
+      tags:
+        - geo
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Appelation Zone.
+        required: true
+        type: integer
+  /geo/corrector/{query}:
+    get:
+      operationId: geo_corrector
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Appellation'
+      tags:
+        - geo
+    parameters:
+      - name: query
+        in: path
+        required: true
+        type: string
+  /geo/geocoding/{address}:
+    get:
+      operationId: geo_get_description_wine
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppellationZone'
+      tags:
+        - geo
+    parameters:
+      - name: address
+        in: path
+        required: true
+        type: string
+  /geo/grape/{grape}:
+    get:
+      operationId: geo_grape_variety
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Appellation'
+      tags:
+        - geo
+    parameters:
+      - name: grape
+        in: path
+        required: true
+        type: string
+  /geo/image:
+    get:
+      operationId: geo_get_image
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppellationZone'
+      tags:
+        - geo
+    parameters: []
+  /geo/landscape:
+    get:
+      operationId: geo_landscape_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - geo
+    post:
+      operationId: geo_landscape_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - geo
+    parameters: []
+  /geo/landscape/{id}:
+    get:
+      operationId: geo_landscape_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - geo
+    put:
+      operationId: geo_landscape_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - geo
+    patch:
+      operationId: geo_landscape_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - geo
+    delete:
+      operationId: geo_landscape_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - geo
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Appellation Photo.
+        required: true
+        type: integer
+  /geo/landscape360:
+    get:
+      operationId: geo_landscape360_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - geo
+    post:
+      operationId: geo_landscape360_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - geo
+    parameters: []
+  /geo/landscape360/{id}:
+    get:
+      operationId: geo_landscape360_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - geo
+    put:
+      operationId: geo_landscape360_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - geo
+    patch:
+      operationId: geo_landscape360_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationPhoto'
+      tags:
+        - geo
+    delete:
+      operationId: geo_landscape360_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - geo
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Appellation Photo.
+        required: true
+        type: integer
+  /geo/polygon/{id_or_name}:
+    get:
+      operationId: geo_get_polygon
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppellationZone'
+      tags:
+        - geo
+    parameters:
+      - name: id_or_name
+        in: path
+        required: true
+        type: string
+  /geo/winemakers:
+    get:
+      operationId: geo_winemakers_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineMaker'
+      tags:
+        - geo
+    post:
+      operationId: geo_winemakers_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMaker'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - geo
+    parameters: []
+  /geo/winemakers/{id}:
+    get:
+      operationId: geo_winemakers_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - geo
+    put:
+      operationId: geo_winemakers_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMaker'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - geo
+    patch:
+      operationId: geo_winemakers_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMaker'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - geo
+    delete:
+      operationId: geo_winemakers_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - geo
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this WineMaker.
+        required: true
+        type: integer
+  /geo/{id}:
+    get:
+      operationId: geo_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      tags:
+        - geo
+    put:
+      operationId: geo_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      tags:
+        - geo
+    patch:
+      operationId: geo_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AppellationZone'
+      tags:
+        - geo
+    delete:
+      operationId: geo_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - geo
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Appelation Zone.
+        required: true
+        type: integer
+  /stock:
+    get:
+      operationId: stock_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    post:
+      operationId: stock_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StockList'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    parameters: []
+  /stock/filter:
+    get:
+      operationId: stock_get_stock_by_params
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    parameters: []
+  /stock/info/{id}:
+    get:
+      operationId: stock_get_stock_info
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Stock list.
+        required: true
+        type: integer
+  /stock/list:
+    get:
+      operationId: stock_list_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    post:
+      operationId: stock_list_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StockList'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    parameters: []
+  /stock/list/{id}:
+    get:
+      operationId: stock_list_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    put:
+      operationId: stock_list_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StockList'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    patch:
+      operationId: stock_list_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StockList'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    delete:
+      operationId: stock_list_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - stock
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Stock list.
+        required: true
+        type: integer
+  /stock/list/{scale_id}/{client_id}:
+    post:
+      operationId: stock_create_stocklist
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StockList'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    parameters:
+      - name: client_id
+        in: path
+        required: true
+        type: string
+      - name: scale_id
+        in: path
+        required: true
+        type: string
+  /stock/provinum/info/{id}:
+    get:
+      operationId: stock_provinum_get_stock_wine_info
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Stock list.
+        required: true
+        type: integer
+  /stock/sommelier/{customer_id}/{date_min}:
+    get:
+      operationId: stock_get_stock_clint_by_date
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ClientSeriazer'
+      tags:
+        - stock
+    parameters:
+      - name: customer_id
+        in: path
+        required: true
+        type: string
+      - name: date_min
+        in: path
+        required: true
+        type: string
+  /stock/stocklist/{client_id}:
+    get:
+      operationId: stock_get_stock_wine_info
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ClientSeriazer'
+      tags:
+        - stock
+    parameters:
+      - name: client_id
+        in: path
+        required: true
+        type: string
+  /stock/{id}:
+    get:
+      operationId: stock_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    put:
+      operationId: stock_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StockList'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    patch:
+      operationId: stock_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StockList'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StockList'
+      tags:
+        - stock
+    delete:
+      operationId: stock_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - stock
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Stock list.
+        required: true
+        type: integer
+  /swagger:
+    get:
+      operationId: swagger_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      produces:
+        - application/coreapi+json
+        - application/openapi+json
+      tags:
+        - swagger
+    parameters: []
+  /wine:
+    get:
+      operationId: wine_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineCDC'
+      tags:
+        - wine
+    post:
+      operationId: wine_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineCDC'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineCDC'
+      tags:
+        - wine
+    parameters: []
+  /wine/appellation_information/{id}:
+    get:
+      operationId: wine_get_appellation_information
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineCDC'
+      tags:
+        - wine
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine CDC.
+        required: true
+        type: integer
+  /wine/appellation_properties/{id}:
+    get:
+      operationId: wine_get_properties
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineCDC'
+      tags:
+        - wine
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine CDC.
+        required: true
+        type: integer
+  /wine/blend/{id}:
+    get:
+      operationId: wine_get_blend
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineCDC'
+      tags:
+        - wine
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine CDC.
+        required: true
+        type: integer
+  /wine/climax/{id}:
+    get:
+      operationId: wine_get_climax
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineCDC'
+      tags:
+        - wine
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine CDC.
+        required: true
+        type: integer
+  /wine/profile/{id}:
+    get:
+      operationId: wine_get_profile
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineCDC'
+      tags:
+        - wine
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine CDC.
+        required: true
+        type: integer
+  /wine/serve/{id}:
+    get:
+      operationId: wine_get_serve
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineCDC'
+      tags:
+        - wine
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine CDC.
+        required: true
+        type: integer
+  /wine/terroir/{id}:
+    get:
+      operationId: wine_get_wine_cdc
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineCDC'
+      tags:
+        - wine
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine CDC.
+        required: true
+        type: integer
+  /wine/{id}:
+    get:
+      operationId: wine_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineCDC'
+      tags:
+        - wine
+    put:
+      operationId: wine_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineCDC'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineCDC'
+      tags:
+        - wine
+    patch:
+      operationId: wine_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineCDC'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineCDC'
+      tags:
+        - wine
+    delete:
+      operationId: wine_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - wine
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Wine CDC.
+        required: true
+        type: integer
+  /wmk:
+    get:
+      operationId: wmk_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineMaker'
+      tags:
+        - wmk
+    post:
+      operationId: wmk_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMaker'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - wmk
+    parameters: []
+  /wmk/autocomplete/{query}:
+    get:
+      operationId: wmk_autocomplate
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/WineMaker'
+      tags:
+        - wmk
+    parameters:
+      - name: query
+        in: path
+        required: true
+        type: string
+  /wmk/{id}:
+    get:
+      operationId: wmk_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - wmk
+    put:
+      operationId: wmk_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMaker'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - wmk
+    patch:
+      operationId: wmk_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WineMaker'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/WineMaker'
+      tags:
+        - wmk
+    delete:
+      operationId: wmk_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - wmk
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this WineMaker.
+        required: true
+        type: integer
+  /wse/appellation_zone/{query}:
+    get:
+      operationId: wse_autocomplate_appellation_zone
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - wse
+    parameters:
+      - name: query
+        in: path
+        required: true
+        type: string
+  /wse/autocomplete/{field}/{query}:
+    get:
+      operationId: wse_autocomplate_field
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - wse
+    parameters:
+      - name: field
+        in: path
+        required: true
+        type: string
+      - name: query
+        in: path
+        required: true
+        type: string
+  /wse/autocomplete/{query}:
+    get:
+      operationId: wse_autocomplate
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - wse
+    parameters:
+      - name: query
+        in: path
+        required: true
+        type: string
+  /wse/cleaner/{query}:
+    get:
+      operationId: wse_cleaner
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - wse
+    parameters:
+      - name: query
+        in: path
+        required: true
+        type: string
+  /wse/corrector/{field}/{query}:
+    get:
+      operationId: wse_corrector
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - wse
+    parameters:
+      - name: field
+        in: path
+        required: true
+        type: string
+      - name: query
+        in: path
+        required: true
+        type: string
+  /wse/country/autocomplete/{query}:
+    get:
+      operationId: wse_country_autocomplete_country
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - wse
+    parameters:
+      - name: query
+        in: path
+        required: true
+        type: string
+  /wse/geovinum/{field}/{query}:
+    get:
+      operationId: wse_geovinum
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - wse
+    parameters:
+      - name: field
+        in: path
+        required: true
+        type: string
+      - name: query
+        in: path
+        required: true
+        type: string
+  /wse/get/wine:
+    get:
+      operationId: wse_get_get_wine_by_params
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - wse
+    parameters: []
+  /wse/get/wine_id:
+    get:
+      operationId: wse_get_get_wine_by_id
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - wse
+    parameters: []
+  /wse/grape/autocomplete/{query}:
+    get:
+      operationId: wse_grape_autocomplete_grape
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - wse
+    parameters:
+      - name: query
+        in: path
+        required: true
+        type: string
+  /wse/region/autocomplete/{query}:
+    get:
+      operationId: wse_region_autocomplete_region
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - wse
+    parameters:
+      - name: query
+        in: path
+        required: true
+        type: string
+  /wse/vineyard/autocomplete/{query}:
+    get:
+      operationId: wse_vineyard_autocomplete_vineyard
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - wse
+    parameters:
+      - name: query
+        in: path
+        required: true
+        type: string
+definitions:
+  FoodWineMatchSeriazer:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      country:
+        title: Country
+        type: string
+        maxLength: 255
+        x-nullable: true
+      region:
+        title: Region
+        type: string
+        x-nullable: true
+      vineyard:
+        title: Vineyard
+        type: string
+        x-nullable: true
+      appellation:
+        title: Appellation
+        type: string
+        x-nullable: true
+      dgs:
+        title: Dgs
+        type: string
+        x-nullable: true
+      grape:
+        title: Grape
+        type: string
+        x-nullable: true
+      type:
+        title: Type
+        type: string
+        x-nullable: true
+      colour:
+        title: Colour
+        type: string
+        x-nullable: true
+      dose:
+        title: Dose
+        type: string
+        x-nullable: true
+      denomination_wine:
+        title: Denomination wine
+        type: string
+        x-nullable: true
+      source:
+        title: Source
+        type: string
+        x-nullable: true
+      created_at:
+        title: Created at
+        type: string
+        format: date
+      food:
+        title: Food
+        type: integer
+        x-nullable: true
+  AMVFood:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      description:
+        title: Description
+        type: string
+        x-nullable: true
+      category:
+        title: Category
+        type: integer
+        x-nullable: true
+      slug:
+        title: Slug
+        type: string
+        x-nullable: true
+      food_wine_match:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  AdminZone:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      parent:
+        title: Parent
+        type: integer
+        x-nullable: true
+      zone_appelation:
+        title: Zone appelation
+        type: integer
+        x-nullable: true
+      hierarchy:
+        title: Hierarchy
+        type: string
+        x-nullable: true
+      geom:
+        title: Geom
+        type: string
+        x-nullable: true
+      plot_zone:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      countries:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  Appellation:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      zone_appelation:
+        title: Zone appelation
+        type: integer
+        x-nullable: true
+      name_dgc:
+        title: Name dgc
+        type: string
+        maxLength: 255
+        x-nullable: true
+      label:
+        title: Label
+        type: string
+        x-nullable: true
+      etymology:
+        title: Etymology
+        type: string
+        x-nullable: true
+      hierarchy:
+        title: Hierarchy
+        type: string
+        x-nullable: true
+      volume_production:
+        title: Volume production
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      denomination_wine:
+        title: Denomination wine
+        type: integer
+        x-nullable: true
+      appellation_colour:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      wine_cdc:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      sugar_dose:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  AppellationColour:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      type_authorization:
+        title: Type authorization
+        type: string
+        x-nullable: true
+      color_authorization:
+        title: Color authorization
+        type: string
+        x-nullable: true
+      percentage:
+        title: Percentage
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      appellation:
+        title: Appellation
+        type: integer
+        x-nullable: true
+  AppellationPhoto:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      shooting:
+        title: Shooting
+        type: string
+        x-nullable: true
+      definition:
+        title: Definition
+        type: string
+        x-nullable: true
+      file_name:
+        title: File name
+        type: string
+        x-nullable: true
+      url:
+        title: Url
+        type: string
+        x-nullable: true
+      date:
+        title: Date
+        type: string
+        format: date
+      source:
+        title: Source
+        type: string
+        x-nullable: true
+      description:
+        title: Description
+        type: string
+        x-nullable: true
+      media_photo:
+        title: Media photo
+        type: string
+        x-nullable: true
+      gps_coordinates:
+        title: Gps coordinates
+        type: string
+        x-nullable: true
+      appellation_zone:
+        title: Appellation zone
+        type: integer
+        x-nullable: true
+  AppellationType:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      type_authorization:
+        title: Type authorization
+        type: string
+        x-nullable: true
+      appellation:
+        title: Appellation
+        type: integer
+        x-nullable: true
+  AppellationZone:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      parent:
+        title: Parent
+        type: integer
+        x-nullable: true
+      geom:
+        title: Geom
+        type: string
+        x-nullable: true
+      ground:
+        title: Ground
+        type: string
+        x-nullable: true
+      subsoil:
+        title: Subsoil
+        type: string
+        x-nullable: true
+      climat:
+        title: Climat
+        type: string
+        x-nullable: true
+      min_elevetion:
+        title: Min elevetion
+        type: number
+        x-nullable: true
+      max_elevetion:
+        title: Max elevetion
+        type: number
+        x-nullable: true
+      average_elevetion:
+        title: Average elevetion
+        type: number
+        x-nullable: true
+      min_precipitation:
+        title: Min precipitation
+        type: number
+        x-nullable: true
+      max_precipitation:
+        title: Max precipitation
+        type: number
+        x-nullable: true
+      average_precipitation:
+        title: Average precipitation
+        type: number
+        x-nullable: true
+      situation:
+        title: Situation
+        type: string
+        x-nullable: true
+      sunshine:
+        title: Sunshine
+        type: string
+        x-nullable: true
+      min_temperature:
+        title: Min temperature
+        type: number
+        x-nullable: true
+      max_temperature:
+        title: Max temperature
+        type: number
+        x-nullable: true
+      average_temperature:
+        title: Average temperature
+        type: number
+        x-nullable: true
+      orientation:
+        title: Orientation
+        type: string
+        x-nullable: true
+      air:
+        title: Air
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      geology:
+        title: Geology
+        type: string
+        x-nullable: true
+      pedology:
+        title: Pedology
+        type: string
+        x-nullable: true
+      lithology:
+        title: Lithology
+        type: string
+        x-nullable: true
+      hierarchy:
+        title: Hierarchy
+        type: string
+        x-nullable: true
+      appellation_zone_photos:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      appellation:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      admin_zones:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      plot_zones:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  Aroma:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      category:
+        title: Category
+        type: string
+        maxLength: 255
+        x-nullable: true
+      profile_wine_cdc:
+        title: Profile wine cdc
+        type: integer
+        x-nullable: true
+  Assemble:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      grape_assemble:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      winecdc:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  Bottle:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      wine_bottle:
+        title: Wine bottle
+        type: integer
+        x-nullable: true
+      volume:
+        title: Volume
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      gtin:
+        title: Gtin
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      code:
+        title: Code
+        type: string
+        maxLength: 25
+        x-nullable: true
+      container:
+        title: Container
+        type: string
+        x-nullable: true
+      bottle_photos:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  BottlePhoto:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      shooting:
+        title: Shooting
+        type: string
+        x-nullable: true
+      definition:
+        title: Definition
+        type: string
+        x-nullable: true
+      file_name:
+        title: File name
+        type: string
+        x-nullable: true
+      url:
+        title: Url
+        type: string
+        x-nullable: true
+      date:
+        title: Date
+        type: string
+        format: date
+      source:
+        title: Source
+        type: string
+        x-nullable: true
+      type_photo:
+        title: Type photo
+        type: string
+        x-nullable: true
+      media_photo:
+        title: Media photo
+        type: string
+        x-nullable: true
+      bottle:
+        title: Bottle
+        type: integer
+        x-nullable: true
+  BottlePriceSeriazer:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      price:
+        title: Price
+        type: number
+        x-nullable: true
+      currency:
+        title: Currency
+        type: string
+        maxLength: 5
+        x-nullable: true
+      category:
+        title: Category
+        type: string
+        x-nullable: true
+      promo_price:
+        title: Promo price
+        type: number
+        x-nullable: true
+      start_promotion_date:
+        title: Start promotion date
+        type: string
+        format: date
+      end_promotion_date:
+        title: End promotion date
+        type: string
+        format: date
+      stocklist:
+        title: Stocklist
+        type: integer
+        x-nullable: true
+  CategoryLexicon:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      lexicons:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  ClientSeriazer:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      id_customer:
+        title: Id customer
+        type: string
+        x-nullable: true
+      warehouses:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      scales:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      commands:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  CommandSeriazer:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      date:
+        title: Date
+        type: string
+        format: date
+      id_client:
+        title: Id client
+        type: integer
+        x-nullable: true
+      id_stocklist:
+        title: Id stocklist
+        type: integer
+        x-nullable: true
+  Cooking:
+    required:
+      - recipes_cooking
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      description:
+        title: Description
+        type: string
+        x-nullable: true
+      slug:
+        title: Slug
+        type: string
+        x-nullable: true
+      recipes_cooking:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+  Country:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      zone_admin:
+        title: Zone admin
+        type: integer
+        x-nullable: true
+      code_two:
+        title: Code two
+        type: string
+        maxLength: 2
+        x-nullable: true
+      code_three:
+        title: Code three
+        type: string
+        maxLength: 3
+        x-nullable: true
+      winemaker:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  DenominationWine:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      appellations:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      order:
+        title: Order
+        type: string
+        maxLength: 255
+        x-nullable: true
+      wine_cdc:
+        title: Wine cdc
+        type: integer
+        x-nullable: true
+  FoodSeriazer:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      description:
+        title: Description
+        type: string
+        x-nullable: true
+      category:
+        title: Category
+        type: integer
+        x-nullable: true
+      slug:
+        title: Slug
+        type: string
+        x-nullable: true
+      food_wine_match:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  FoodCategory:
+    required:
+      - food
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      food:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+  Grape:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      grape_profile:
+        title: Grape profile
+        type: integer
+        x-nullable: true
+      parent:
+        title: Parent
+        type: integer
+        x-nullable: true
+      colour:
+        title: Colour
+        type: string
+        maxLength: 255
+        x-nullable: true
+      technical_name:
+        title: Technical name
+        type: string
+        x-nullable: true
+      country:
+        title: Country
+        type: integer
+        x-nullable: true
+      survey_hectares:
+        title: Survey hectares
+        type: string
+        x-nullable: true
+      date_servey_hectares:
+        title: Date servey hectares
+        type: string
+        format: date
+      comment_grape:
+        title: Comment grape
+        type: string
+        x-nullable: true
+      aromas:
+        title: Aromas
+        type: string
+        x-nullable: true
+      description_tastes:
+        title: Description tastes
+        type: string
+        x-nullable: true
+      description_visual:
+        title: Description visual
+        type: string
+        x-nullable: true
+      skins:
+        title: Skins
+        type: string
+        x-nullable: true
+      cultural_aptures:
+        title: Cultural aptures
+        type: string
+        x-nullable: true
+      phenology:
+        title: Phenology
+        type: string
+        x-nullable: true
+      potential_garde:
+        title: Potential garde
+        type: string
+        x-nullable: true
+      yields:
+        title: Yields
+        type: string
+        x-nullable: true
+      maturity:
+        title: Maturity
+        type: string
+        x-nullable: true
+      berry_pruning:
+        title: Berry pruning
+        type: string
+        x-nullable: true
+      species:
+        title: Species
+        type: string
+        x-nullable: true
+      year_cross:
+        title: Year cross
+        type: string
+        x-nullable: true
+      creator:
+        title: Creator
+        type: string
+        x-nullable: true
+      clones:
+        title: Clones
+        type: string
+        x-nullable: true
+      grape_assembles:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      grape_main_accessory:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  GrapeAssembly:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      percentage:
+        title: Percentage
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      main_accessory:
+        title: Main accessory
+        type: string
+        x-nullable: true
+      grape:
+        title: Grape
+        type: integer
+        x-nullable: true
+      assemble:
+        title: Assemble
+        type: integer
+        x-nullable: true
+  GrapeProfile:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      acidity_taste:
+        title: Acidity taste
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      alcohol_taste:
+        title: Alcohol taste
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      body_taste:
+        title: Body taste
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      aroma_complexity:
+        title: Aroma complexity
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      aroma_intensity:
+        title: Aroma intensity
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      aroma_length:
+        title: Aroma length
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      general_note:
+        title: General note
+        type: string
+        x-nullable: true
+      grapes:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  Ingredient:
+    required:
+      - recipe_ingredient
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      description:
+        title: Description
+        type: string
+        x-nullable: true
+      slug:
+        title: Slug
+        type: string
+        x-nullable: true
+      recipe_ingredient:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+  Lexicon:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      description:
+        title: Description
+        type: string
+        x-nullable: true
+      source:
+        title: Source
+        type: string
+        x-nullable: true
+      category:
+        title: Category
+        type: integer
+        x-nullable: true
+      wine_cdc_lexicons:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  MessageSeriazer:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      id_customer:
+        title: Id customer
+        type: string
+        x-nullable: true
+      text:
+        title: Text
+        type: string
+        x-nullable: true
+      created_at:
+        title: Created at
+        type: string
+        format: date
+  NoteGuide:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      guide:
+        title: Guide
+        type: string
+        x-nullable: true
+      note:
+        title: Note
+        type: string
+        x-nullable: true
+      wine_bottle:
+        title: Wine bottle
+        type: integer
+        x-nullable: true
+  PlotZone:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      hierarchy:
+        title: Hierarchy
+        type: string
+        x-nullable: true
+      code_insee:
+        title: Code insee
+        type: string
+        maxLength: 25
+        x-nullable: true
+      prefix:
+        title: Prefix
+        type: string
+        maxLength: 25
+        x-nullable: true
+      section:
+        title: Section
+        type: string
+        maxLength: 25
+        x-nullable: true
+      number:
+        title: Number
+        type: string
+        maxLength: 25
+        x-nullable: true
+      geom:
+        title: Geom
+        type: string
+        x-nullable: true
+      zone_admin:
+        title: Zone admin
+        type: integer
+        x-nullable: true
+      parent:
+        title: Parent
+        type: integer
+        x-nullable: true
+      zone_appelation:
+        title: Zone appelation
+        type: integer
+        x-nullable: true
+  Recipe:
+    required:
+      - recipe_ingredients
+      - recipe_spices
+      - recipe_cooking
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      slug:
+        title: Slug
+        type: string
+        x-nullable: true
+      recipe_ingredients:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+      recipe_spices:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+      recipe_cooking:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+  RecipeCooking:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      value:
+        title: Value
+        type: string
+        x-nullable: true
+      recipe:
+        title: Recipe
+        type: integer
+        x-nullable: true
+      cooking:
+        title: Cooking
+        type: integer
+        x-nullable: true
+  RecipeIngredient:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      value:
+        title: Value
+        type: string
+        x-nullable: true
+      recipe:
+        title: Recipe
+        type: integer
+        x-nullable: true
+      ingredient:
+        title: Ingredient
+        type: integer
+        x-nullable: true
+  RecipeSpice:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      value:
+        title: Value
+        type: string
+        x-nullable: true
+      recipe:
+        title: Recipe
+        type: integer
+        x-nullable: true
+      spice:
+        title: Spice
+        type: integer
+        x-nullable: true
+  Robe:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name_colour:
+        title: Name colour
+        type: string
+        maxLength: 255
+        x-nullable: true
+      value_colour:
+        title: Value colour
+        type: string
+        maxLength: 255
+        x-nullable: true
+      wine_profile_cdc:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  ScaleSeriazer:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      client:
+        title: Client
+        type: integer
+        x-nullable: true
+      stocklists:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  Spice:
+    required:
+      - recipe_spices
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      description:
+        title: Description
+        type: string
+        x-nullable: true
+      slug:
+        title: Slug
+        type: string
+        x-nullable: true
+      recipe_spices:
+        type: array
+        items:
+          type: integer
+        uniqueItems: true
+  StockSeriazer:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      quantity:
+        title: Quantity
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      quantity_available:
+        title: Quantity available
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      quantity_ordered:
+        title: Quantity ordered
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      quantity_reserved:
+        title: Quantity reserved
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      stocklist:
+        title: Stocklist
+        type: integer
+        x-nullable: true
+      warehouse:
+        title: Warehouse
+        type: integer
+        x-nullable: true
+  StockList:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      scale:
+        title: Scale
+        type: integer
+        x-nullable: true
+      bottle:
+        title: Bottle
+        type: integer
+        x-nullable: true
+      sku:
+        title: Sku
+        type: string
+        x-nullable: true
+      wine_name:
+        title: Wine name
+        type: string
+        maxLength: 25
+        x-nullable: true
+      country:
+        title: Country
+        type: string
+        x-nullable: true
+      region:
+        title: Region
+        type: string
+        x-nullable: true
+      subregion:
+        title: Subregion
+        type: string
+        x-nullable: true
+      appellation:
+        title: Appellation
+        type: string
+        x-nullable: true
+      label:
+        title: Label
+        type: string
+        x-nullable: true
+      grape_assemble:
+        title: Grape assemble
+        type: string
+        x-nullable: true
+      colour:
+        title: Colour
+        type: string
+        x-nullable: true
+      type:
+        title: Type
+        type: string
+        x-nullable: true
+      vintage:
+        title: Vintage
+        type: string
+        x-nullable: true
+      winemaker:
+        title: Winemaker
+        type: string
+        x-nullable: true
+      certification:
+        title: Certification
+        type: string
+        x-nullable: true
+      volume:
+        title: Volume
+        type: string
+        x-nullable: true
+      weight:
+        title: Weight
+        type: string
+        x-nullable: true
+      comment:
+        title: Comment
+        type: string
+        x-nullable: true
+      note:
+        title: Note
+        type: string
+        x-nullable: true
+      image:
+        title: Image
+        type: string
+        x-nullable: true
+      price_pre_taxe:
+        title: Price pre taxe
+        type: number
+        x-nullable: true
+      vat:
+        title: Vat
+        type: number
+        x-nullable: true
+      price_with_taxe:
+        title: Price with taxe
+        type: number
+        x-nullable: true
+      status:
+        title: Status
+        type: string
+        x-nullable: true
+      currency:
+        title: Currency
+        type: string
+        maxLength: 5
+        x-nullable: true
+      bottle_prices:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      stocks:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  SugarDose:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      type_wine:
+        title: Type wine
+        type: string
+        x-nullable: true
+      min_sugar_concentration:
+        title: Min sugar concentration
+        type: number
+        x-nullable: true
+      max_sugar_concentration:
+        title: Max sugar concentration
+        type: number
+        x-nullable: true
+      appellations:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      wine_cdc:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  Vintage:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      wine_cdc:
+        title: Wine cdc
+        type: integer
+        x-nullable: true
+      start_apogee:
+        title: Start apogee
+        type: string
+        format: date
+      apogee:
+        title: Apogee
+        type: string
+        format: date
+      end_apogee:
+        title: End apogee
+        type: string
+        format: date
+      quality:
+        title: Quality
+        type: number
+        x-nullable: true
+      year:
+        title: Year
+        type: string
+        format: date
+      year_as_int:
+        title: Year as int
+        type: string
+        readOnly: true
+      wine_bottles:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      comment_vintage:
+        title: Comment vintage
+        type: string
+        x-nullable: true
+  ViticultureZone:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      hierarchy:
+        title: Hierarchy
+        type: string
+        x-nullable: true
+      geom:
+        title: Geom
+        type: string
+        x-nullable: true
+      parent:
+        title: Parent
+        type: integer
+        x-nullable: true
+      zone_admin:
+        title: Zone admin
+        type: integer
+        x-nullable: true
+  WarehouseSeriazer:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      client:
+        title: Client
+        type: integer
+        x-nullable: true
+      stocks:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  WineBottle:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      wine_profile_cdc:
+        title: Wine profile cdc
+        type: integer
+        x-nullable: true
+      vintage:
+        title: Vintage
+        type: integer
+        x-nullable: true
+      winemaker:
+        title: Winemaker
+        type: integer
+        x-nullable: true
+      assemble:
+        title: Assemble
+        type: integer
+        x-nullable: true
+      comment_degustation:
+        title: Comment degustation
+        type: string
+        x-nullable: true
+      comment_vinification:
+        title: Comment vinification
+        type: string
+        x-nullable: true
+      comment_viticulture:
+        title: Comment viticulture
+        type: string
+        x-nullable: true
+      certification:
+        title: Certification
+        type: string
+        x-nullable: true
+      alcohol:
+        title: Alcohol
+        type: number
+        x-nullable: true
+      name_tank:
+        title: Name tank
+        type: string
+        x-nullable: true
+      bottles:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      note_guides:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  WineCDC:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        x-nullable: true
+      colour:
+        title: Colour
+        type: string
+        x-nullable: true
+      type:
+        title: Type
+        type: string
+        x-nullable: true
+      comment_descritpion:
+        title: Comment descritpion
+        type: string
+        x-nullable: true
+      assemble:
+        title: Assemble
+        type: integer
+        x-nullable: true
+      appellation:
+        title: Appellation
+        type: integer
+        x-nullable: true
+      sugar_dose:
+        title: Sugar dose
+        type: integer
+        x-nullable: true
+      wine_cdc_lexicons:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      vintages:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      wine_profile_cdc:
+        title: Wine profile cdc
+        type: integer
+        x-nullable: true
+      denomination_wine:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  WineCDCLexicon:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      coefficient:
+        title: Coefficient
+        type: number
+        x-nullable: true
+      wine_cdc:
+        title: Wine cdc
+        type: integer
+        x-nullable: true
+      lexicon:
+        title: Lexicon
+        type: integer
+        x-nullable: true
+  WineMaker:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 255
+        x-nullable: true
+      siren:
+        title: Siren
+        type: string
+        x-nullable: true
+      viticulture:
+        title: Viticulture
+        type: string
+        x-nullable: true
+      creation_date:
+        title: Creation date
+        type: string
+        format: date
+      address:
+        title: Address
+        type: string
+        x-nullable: true
+      gps_location:
+        title: Gps location
+        type: string
+        x-nullable: true
+      type_winemaker:
+        title: Type winemaker
+        type: string
+        x-nullable: true
+      comment_winemaker:
+        title: Comment winemaker
+        type: string
+        x-nullable: true
+      winemaker_profile:
+        title: Winemaker profile
+        type: integer
+        x-nullable: true
+      country:
+        title: Country
+        type: integer
+        x-nullable: true
+  WineMakerProfile:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      acidity_taste:
+        title: Acidity taste
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      alcohol_taste:
+        title: Alcohol taste
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      body_taste:
+        title: Body taste
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      sucrosite_taste:
+        title: Sucrosite taste
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      aroma_complexity:
+        title: Aroma complexity
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      aroma_intensity:
+        title: Aroma intensity
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      aroma_length:
+        title: Aroma length
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      general_note:
+        title: General note
+        type: string
+        x-nullable: true
+      winemakers:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+  WineProfileCDC:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      acidity_taste:
+        title: Acidity taste
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      alcohol_taste:
+        title: Alcohol taste
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      body_taste:
+        title: Body taste
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      aroma_complexity:
+        title: Aroma complexity
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      aroma_intensity:
+        title: Aroma intensity
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      aroma_length:
+        title: Aroma length
+        type: integer
+        maximum: 2147483647
+        minimum: -2147483648
+        x-nullable: true
+      general_note:
+        title: General note
+        type: string
+        x-nullable: true
+      robe_description:
+        title: Robe description
+        type: string
+        x-nullable: true
+      fruity_note:
+        title: Fruity note
+        type: string
+        x-nullable: true
+      acidity_note:
+        title: Acidity note
+        type: string
+        x-nullable: true
+      body_note:
+        title: Body note
+        type: string
+        x-nullable: true
+      intensity_note:
+        title: Intensity note
+        type: string
+        x-nullable: true
+      temperature:
+        title: Temperature
+        type: string
+        x-nullable: true
+      opening_time:
+        title: Opening time
+        type: string
+        x-nullable: true
+      wine_cdc:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      robe:
+        type: array
+        items:
+          type: integer
+          x-nullable: true
+        uniqueItems: true
+      aging:
+        title: Aging
+        type: integer
+        x-nullable: true

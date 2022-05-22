@@ -1,0 +1,4 @@
+cron:
+- description: "Algolia reindex job"
+  url: /algolia-reindex
+  schedule: every month

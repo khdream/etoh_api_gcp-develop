@@ -1,0 +1,8 @@
+steps:
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy", "${_APP_FILE_NAME}"]
+substitutions:
+    _APP_FILE_NAME: app_dev.yaml # default value
+timeout: "1600s"
+options:
+  logging: CLOUD_LOGGING_ONLY
